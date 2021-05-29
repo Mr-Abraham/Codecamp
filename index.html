@@ -1,0 +1,831 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CodeCamp</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="/coding.png" type="image/x-icon" sizes="32x32">
+    <style>
+        *{
+    margin: 0;
+    padding: 0;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+*,
+*::before,
+*::after{
+    box-sizing: border-box;
+}
+body{
+    height: 100vh;
+
+}
+.container{
+    background: linear-gradient(rgba(153, 4, 4, 0.4),rgba(0,0,0,.2)), url('https://user-images.githubusercontent.com/82175847/120084234-2d508a80-c0ec-11eb-84fb-8c2068b337ef.jpg');
+    background-size: cover;
+    height: 80vh;
+    border-bottom-left-radius: 110px;
+    background-position: bottom;
+}
+header{
+    padding: .5em;
+    
+}
+
+header h3{
+    position: relative;
+    position: absolute;
+    top: 15px;
+    left: 35px;
+    color: rgb(3, 1, 1);
+    font-family:Arial, Helvetica, sans-serif;
+    font-size: 1.5em;
+    font-weight: 400;
+    background: -webkit-linear-gradient(rgb(236, 72, 72), rgb(23, 179, 119));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.container header ul li{
+    position: relative;
+    top: 45px;
+    left: 0px;
+    width: 100%;
+    line-height: 1.5;
+    list-style: none;
+     transform: scale(1,0);    
+     transform-origin: top;
+     transition: .3s ease-in-out;
+     background: #ffddcc;
+     padding: .5em;
+     z-index: 2;
+
+}
+.container header ul li:hover{
+    background: #fff;
+    text-decoration: underline;
+
+}
+
+.container header ul li a{
+    text-decoration: none;
+    color: #333;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+#toggle{
+    display: none;
+}
+header label{
+    position: absolute;
+    right: 20px;
+    font-size: 2em;
+    top: 12px;
+    color: #fff;
+}
+
+#toggle:checked ~ ul li{
+    transform: scale(1,1);
+    
+}
+
+.heading-content{
+    padding: .5em;
+    position: relative;
+    bottom: 4em;
+    margin-left: 1.2em;
+}
+
+.heading-content h2{
+    max-width: 260px;
+    margin-bottom: 1em;
+    font-size: 1.65em;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-weight: 550;
+    color: #fff;
+    line-height: 1.38;
+}
+#title{
+    color: #ffdf6b;
+    font-weight: 580;
+}
+
+.heading-content p{
+font-size: .89em;
+color: #fff;
+margin-bottom: 1em;
+max-width: 250px;
+line-height: 1.4;
+}
+.heading-content button{
+    outline: 0;
+    border: 1px solid #fff;
+    border: none;
+    background: #ff8474;
+    padding: .75em 1em;
+    margin: 1em 0;
+}
+.heading-content button a{
+    text-decoration: none;
+    color: #fff;
+    padding: 1.5em 1em;
+}
+img{
+    max-width: 100%;
+}
+.about-content{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: .25em;
+    text-align: center;
+}
+.about-content >div img{
+    border-top-right-radius: 60px;
+    padding: .2em;
+}
+
+.about-content h2{
+    margin: .5em auto;
+    max-width: 250px;
+    font-weight: 500;
+    padding: .4em;
+    transform: translateY(20px);
+}
+#country{
+    color:#ff8474 ;
+    font-size: 1.2em;
+    font-weight: 590;
+}
+.about-content p{
+    font-weight: 400;
+    line-height: 1.4;
+    font-size: .71em;
+    color: hsl(400,12%,39%);
+    padding: 1.5em;
+    margin-bottom: 1.7em;
+}
+.about-content a{
+    color: #000;
+    text-decoration: none;
+    padding: .65em 1em;
+    position: relative;
+    background: #ff8474;
+    border-radius: 10px;
+}
+.analysis{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin: 1.5em 0;
+    padding: .51em;
+}
+.grid{
+    box-sizing: border-box;
+    width: 100px;
+    margin: 10px;
+    padding: 1.5em;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100px;
+    box-shadow: 0 0 30px #ccc;
+    transition: 350ms ease-in-out;
+    border-radius: 5px;
+}
+.grid h3{
+    font-size: .91em;
+    font-weight: 400;
+}
+.grid:hover{
+    transform: scale(1.1);
+}
+
+.courses-content{
+    background: rgba(236, 232, 232, 0.29);
+}
+.header-section{
+    padding: 1em;
+    text-align: center;
+    margin: .6em 0;
+    
+}
+.header-section h3{
+    font-size: 1em;
+    font-weight: 500;
+}
+.header-section p{
+    max-width: 600px;
+    padding: .5em;
+    margin-top: 1.5em;
+    font-weight: 100;
+    color: hsl(200, 5%, 39%);
+    font-size: .69rem;
+    text-align: center;
+}
+.course{
+    padding: 1.22em  .42em;
+    margin: 0  1.5rem;
+    line-height: 1.5em;
+    height: 100%;
+    /* border: 1px solid red; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 0px 0px 5px 0px rgba(173, 206, 243, 0.2);
+    border-radius: 5px;
+    transition: 250ms ease-in-out;
+    /* text-align: center; */
+}
+.course:hover{
+    box-shadow: 0px 0px 25px 0px rgba(173, 206, 243, 0.8);
+}
+
+.section{
+    width: 100%;
+    text-align: center;
+    /* height: 40vh; */
+    display: flex;
+    flex-direction: column;
+    background: #fb9300;
+
+}
+.section a{
+    margin: .6em auto;
+    
+}
+
+.course h4{
+    font-size: 1em;
+    font-weight: 500;
+    color: #0a1931;
+    margin-top: .5em;
+}
+
+.course p{
+    font-size: .87em;
+    color: black;
+    margin-top: .55em;
+    /* margin-bottom: 1em; */
+}
+.course a{
+    text-decoration: none;
+    color: #fff;
+    background:black;
+    padding: .5em .91em;
+    margin-top: 1em;
+    border-radius: 5px;
+    font-size: .75em;
+}
+.services{
+    /* border: 1px solid red; */
+    padding: .85em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.service{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin: .5em 0;
+    padding: .5em;
+}
+.service h2{
+    font-size: 1.3em;
+    color: #333;
+    font-weight: 100;
+}
+.service p{
+    font-size: .75em;
+    font-weight: 100;
+    margin-top: 1.2em;
+    line-height: 1.45em;
+    color: rgb(133, 130, 130);
+}
+
+.service-icon{
+    box-sizing: border-box;
+    margin: .85em;
+    max-width: 120px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid rgb(243, 111, 16);
+    border-radius: 50%;
+    padding: 2em;
+}
+
+.centers-header{
+    padding: .85em;
+    margin: .3em;
+    text-align: center;
+}
+.centers-header h2{
+font-weight: 400;
+margin-bottom: .75em;
+}
+.centers-header p{
+  font-size: .85em;
+  color: rgb(133, 130, 130);
+  line-height: 1.5;
+}
+
+.gallery-section{
+    display: grid;
+    grid-template-rows: 350px 190px 80px 200px  ;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: .85em;
+    margin: 1.5em 0;
+    padding: 1.5em;
+}
+
+.gallery-one{
+  background: brown url('https://user-images.githubusercontent.com/82175847/120084244-36d9f280-c0ec-11eb-85fd-8226177e0f8f.jpg');
+  background-size: cover;
+
+  grid-column: 1/-1;
+  border-radius: 45px 20px;
+  background-position: right;
+}
+
+.gallery-two{
+    background: burlywood url('https://user-images.githubusercontent.com/82175847/120084230-29bd0380-c0ec-11eb-95d7-e53622544206.jpg');
+    background-size: cover;
+    background-position: center;
+    grid-row: 2/4;
+    border-radius: 45px 20px;
+ }
+ .gallery-three{
+    background: chocolate url('https://user-images.githubusercontent.com/82175847/120084216-1873f700-c0ec-11eb-95ff-6b4eb8188311.jpg');
+    background-size: cover;
+    background-position: center;
+    grid-column: 2/-1;
+    grid-row: 2/3;
+    border-radius: 45px 20px;
+ }
+ .gallery-four{
+    background: coral url('https://user-images.githubusercontent.com/82175847/120084230-29bd0380-c0ec-11eb-95d7-e53622544206.jpg');
+    background-size: cover;
+    grid-column: 2/3;
+    grid-row: 3/5;
+    border-radius: 45px 20px;
+
+ }
+ .gallery-five{
+    background: crimson url(/Code.jpg);
+    border-radius: 45px 20px;
+     background-size: cover;    
+     background-position: center;
+
+ }
+
+ @media screen and (min-width:600px) {
+    
+    .heading-content{
+        padding: .5em;
+        position: relative;
+        bottom: 4em;
+        margin-left: 4.2em;
+
+    }
+    
+    .heading-content h2{
+        max-width: 960px;
+        margin-bottom: 1em;
+        font-size: 2.95em;
+        font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        font-weight: 550;
+        color: #fff;
+        line-height: 1.38;
+    }
+    #title{
+        color: #ffdf6b;
+        font-weight: 580;
+    }
+    
+    .heading-content p{
+    font-size: 1em;
+    color: #fff;
+    margin-bottom: 1em;
+    max-width: 750px;
+    line-height: 1.4;
+    }
+    .heading-content button{
+        outline: 0;
+        border: 1px solid #fff;
+        border: none;
+        background: #ff8474;
+        padding: .75em 1em;
+        margin: 1em 0;
+    }
+    .heading-content button a{
+        text-decoration: none;
+        color: #fff;
+        padding: 1.5em 1em;
+        font-size: 1.25em;
+    }
+
+    header label{
+        position: absolute;
+        right: 50px;
+        font-size: 2.4em;
+        top: 22px;
+        color: #fff;
+    }
+    .header ul{
+        top: 250px;
+        position: a;
+    }
+    .container header ul li{
+        top: 65px;
+    }
+    header h3{
+        top: 30px;
+        left: 74px;
+        font-size: 2.4em;
+    }
+
+    .about-content{
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items:flex-start;
+        text-align: justify;
+        gap: 10px;
+    }
+
+    .about-components,
+    .about-image{
+        max-width: 50%;
+        flex-basis: 100%;
+    }
+    .about-components{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+        line-height: 1;
+        padding: .51em;
+    }
+
+
+    .about-content h2{
+        width: 150px;
+        font-weight: 500;
+        margin-bottom: 10px;
+        line-height: 1.3;
+        margin-left: 0;
+        font-size: 1.72em;
+    }
+    .about-components p{
+        max-width: 400px;
+        font-size: .91em;
+        margin: .5em 0;
+        margin-left: -.6em;
+    }
+   
+   
+    .about-content a{
+        color: #000;
+        text-decoration: none;
+        padding: .65em 1em;
+        background: #ff8474;
+        border-radius: 10px;
+        margin-left: .59em;
+        font-size: .8em;
+
+    }
+
+    .analysis{ 
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        margin: 5.5em 0;
+        padding: .1em;
+     }
+     
+     
+    .grid{
+        box-sizing: border-box;
+        width: 20%;
+        margin: 5px;
+        padding: 2.5em;
+        text-align: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 0 30px #ccc;
+        transition: 350ms ease-in-out;
+        border-radius: 5px;
+        height: 220px;
+    }
+    .grid h3{
+        font-size: 1.291em;
+        font-weight: 400;
+
+    }
+    .courses{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .courses > *{
+        flex-basis: 100%;
+    }
+    .services{
+        display: flex;
+        flex-direction: row;
+    }
+
+
+    .gallery-section{
+        display: grid;
+        grid-template-rows: 350px 190px  200px  ;
+        grid-template-columns: repeat(3, 1fr);
+        grid-gap: .85em;
+        margin: 1.5em 0;
+        padding: 1.5em;
+    }
+    
+    .gallery-one{
+      background: brown url('https://user-images.githubusercontent.com/82175847/120084230-29bd0380-c0ec-11eb-95d7-e53622544206.jpg');
+      background-size: cover;
+      background-position: center;
+      grid-column: 1/2;
+      grid-row: 1/-1;
+      border-radius: 45px 20px;
+    }
+    
+    .gallery-two{
+        background: burlywood url('https://user-images.githubusercontent.com/82175847/120084231-2c1f5d80-c0ec-11eb-8206-f3b29644005f.jpg');
+        background-size: cover;
+        background-position: center;
+        grid-column: 3/4;
+        grid-row: 1/4;
+        border-radius: 45px 20px;
+     }
+     .gallery-three{
+        background: chocolate url('https://user-images.githubusercontent.com/82175847/120084234-2d508a80-c0ec-11eb-84fb-8c2068b337ef.jpg');
+        background-size: cover;
+        background-position: center;
+        grid-column: 2/3;
+        grid-row: 2/3;
+        border-radius: 45px 20px;
+     }
+     .gallery-four{
+        background: coral url('https://user-images.githubusercontent.com/82175847/120084244-36d9f280-c0ec-11eb-85fd-8226177e0f8f.jpg');
+        background-size: cover;
+        background-position: center;
+        grid-column: 2/3;
+        grid-row: 3/5;
+        border-radius: 45px 20px;
+    
+     }
+     .gallery-five{
+        background: crimson url('https://user-images.githubusercontent.com/82175847/120084216-1873f700-c0ec-11eb-95ff-6b4eb8188311.jpg');
+        border-radius: 45px 20px;
+         background-size: cover;    
+         background-position: center;
+    
+     }
+     .header-section{
+         display: flex;
+         flex-direction: column;
+         justify-content: center;
+         align-items: center;
+ 
+
+     }
+ }
+
+ .social-icons img{
+max-width: 20px;
+margin: 0 .52em;
+margin-top: .3em;
+transition: 250ms ease;
+ }
+ .social-icons {
+     box-sizing: border-box;
+     border-bottom: 1px solid grey;
+ }
+
+ .copyright p{
+     font-size: 1.15em;
+     font-weight: 500;
+ }
+
+.logo h1{
+    font-size: 1.2rem;
+    color: #000;
+    font-weight: 400;
+    font-family: monospace;
+    box-shadow: 
+                2px 0 5px rgb(209, 206, 206);
+    border-radius: 10px 20px;
+    padding: .51em;
+}
+
+footer{
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr;
+    justify-content: center;
+    gap: .82em;
+    background: #ddd;
+    padding: .51em 0;
+    text-align: center;
+}
+
+.social-icons img:hover{
+    transform: translateY(-5px);
+    cursor: pointer;
+}
+@media (min-width:550px){
+    footer{
+        box-sizing: border-box;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        align-items:center;
+        gap: .2em;
+        padding: .5em;
+        grid-template-rows: 1fr;
+    }
+    .social-icons{
+        border: 0;
+    }
+}
+
+@media (min-width:900px){
+    .social-icons img{
+        margin: 0 1em;
+    }
+}
+
+@media (max-width:1000px){
+    .about-components p{
+        font-size: .7em
+        ;
+    }
+    .about-components h2{
+        font-size: 1em;
+        width: 210px;
+    }
+}
+
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div>
+                <h3>Codecamp</h3>
+            </div>
+            <div>
+                <input type="checkbox" name="" id="toggle">
+                <label for="toggle">&#9776;</label>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Service</a></li>
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="#">Projects</a></li>
+                </ul>
+            </div>
+        </header>
+        <section class="heading-content">
+            <h2>Explore The World With <span id="title">Codecamp</span></h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit veritatis rerum facere nam tenetur dolores dignissimos magnam deserunt voluptatem? Pariatur nemo cum impedit non ad!</p>
+            <button><a href="">Book Now</a></button>
+        </section>
+    </div>
+    <section class="about-content">
+        <div class="about-image">
+            <img src="https://user-images.githubusercontent.com/82175847/120084234-2d508a80-c0ec-11eb-84fb-8c2068b337ef.jpg" alt="">
+        </div>
+        <div class="about-components">
+            <h2>About Us CodeCamp In <span id="country">India</span></h2>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt, pariatur inventore veniam quam quasi quis sed quos nobis omnis aut corrupti illum, modi, deserunt sint vero non tenetur? Ullam, tempore?</p>
+            <a href="#">Read More</a>
+        </div>
+    </section>
+    <section class="analysis">
+        <div class="grid">
+            <h3>
+                150 <br> Centers
+            </h3>
+        </div>
+        <div class="grid">
+            <h3>90+ <br> Courses</h3>
+        </div>
+        <div class="grid">
+            <h3>
+                2000+ <br> Students
+            </h3>
+        </div>
+        <div class="grid">
+
+            <h3>
+                50+ <br> Partners Companies
+            </h3>
+        </div>
+    </section>
+    <section class="courses-content">
+        <div class="header-section">
+         <h3>Course Packages</h3>
+         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia obcaecati illo exercitationem inventore id saepe repudiandae optio voluptatibus quas porro.</p>
+        </div>
+        <div class="courses">
+            <div class="course">
+                <img src="https://user-images.githubusercontent.com/82175847/120084229-29246d00-c0ec-11eb-9095-1f66e45d3093.jpg" alt="">
+                <div class="section">
+                    <h4>Front End</h4>
+                    <p>html, CSS, Javascript</p>
+                    <a href="#">Learn More</a>
+                </div>
+            </div>
+            <div class="course">
+                <img src="https://user-images.githubusercontent.com/82175847/120084235-2e81b780-c0ec-11eb-8bb8-ec991bc5548f.jpg" alt="">
+                <div class="section">
+                    <h4>Backend</h4>
+                    <p>Node.Js, Php, Python, Mysql</p>
+                    <a href="#">Learn More</a>
+                </div>
+            </div>
+            <div class="course">
+                <img class="api" src="https://user-images.githubusercontent.com/82175847/120084232-2c1f5d80-c0ec-11eb-8a66-5690b427dbb7.jpg" alt="">
+                <div class="section">
+                    <h4>Working with API</h4>
+                    <p>Rest, GraphQl, Json-RPC</p>
+                    <a href="#">Learn More</a>
+                </div>
+            </div>
+            <div class="course">
+                
+                    <img src="https://user-images.githubusercontent.com/82175847/120084244-36d9f280-c0ec-11eb-85fd-8226177e0f8f.jpg" alt="">
+                    <div class="section">
+                    <h4>Version Control</h4>
+                    <p>Repo Hosting, Github, Gitlab</p>
+                    <a href="#">Learn More</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="services">
+      <div class="service">
+          <div class="service-icon"><img src="https://user-images.githubusercontent.com/82175847/120084219-1f026e80-c0ec-11eb-906e-91931bf6b3da.png" alt=""></div>
+          <h2>Onilne Classes</h2>
+          <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Animi repudiandae porro culpa repellendus provident voluptates, vel quod unde sunt!</p>
+      </div>
+      <div class="service">
+          <div class="service-icon"><img src="https://user-images.githubusercontent.com/82175847/120084236-2f1a4e00-c0ec-11eb-806b-642e73c53bf3.png" alt=""></div>
+          <h2>Placement Services</h2>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur aliquam beatae explicabo magni autem, aut exercitationem sed. Nihil, quas obcaecati.</p>
+      </div>
+      <div class="service">
+          <div class="service-icon"><img src="https://user-images.githubusercontent.com/82175847/120084239-317ca800-c0ec-11eb-978a-3910bea0769b.png" alt=""></div>
+          <h2>Certifications</h2>
+          <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Numquam mollitia iure commodi impedit vel inventore odio, libero distinctio doloremque perferendis.</p>
+      </div>
+      <div class="service">
+          <div class="service-icon"><img src="https://user-images.githubusercontent.com/82175847/120084227-26297c80-c0ec-11eb-8398-c406fcf474d9.png" alt=""></div>
+          <h2>Business Development</h2>
+          <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tempore, atque quisquam consequatur molestiae molestias nemo at. Voluptatibus, nisi! Dicta, impedit.</p>
+      </div>
+    </section>
+    <section class="centers">
+        <div class="centers-header">
+            <h2>Gallery</h2>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam facilis praesentium deserunt illum atque ratione!</p>
+        </div>
+        <div class="gallery-section">
+            <div class="gallery-one"></div>
+    <div class="gallery-two"></div>
+    <div class="gallery-three"></div>
+    <div class="gallery-four"></div>
+    <div class="gallery-five"></div>
+    </section>
+    <footer>
+        <div class="logo">
+            <h1>CodeCamp</h1>
+        </div>
+        <div class="social-icons">
+            <a href=""><img src="https://user-images.githubusercontent.com/82175847/120084221-20cc3200-c0ec-11eb-915f-86110c3b6357.png" alt=""></a>
+            <a href=""><img src="https://user-images.githubusercontent.com/82175847/120084228-288bd680-c0ec-11eb-8232-751a72088f63.png" alt=""></a>
+            <a href=""><img src="https://user-images.githubusercontent.com/82175847/120084243-35a8c580-c0ec-11eb-8e5a-6ee2f18df472.png" alt=""></a>
+            <a href=""><img src="https://user-images.githubusercontent.com/82175847/120084226-26297c80-c0ec-11eb-98e9-c9afa8de9d6e.png" alt=""></a>
+        </div>
+        <div class="copyright">
+            <p>&copy; Copyright 2021</p>
+        </div>
+    </footer>
+</body>
+</html>
